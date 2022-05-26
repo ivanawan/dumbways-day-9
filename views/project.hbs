@@ -80,14 +80,16 @@
         <div class="form-group">
           <label for="exampleFormControlTextarea1">Tecnologies</label>
           {{!-- {{chekbox}} --}}
-        <div class="d-flex" style="gap: 16px">
-          <div>
+        <div  style="gap: 16px;display:grid; grid-template-columns: repeat(3,minmax(0,1fr));">
+           {{#if edit}}
+           {{{editChekbox}}}
+           {{else}}
             <div class="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
                 name="checkbox[]"
-                value='ri-reactjs-line ri-xl'
+                value='reactjs'
                 id="defaultCheck1"
               />
               <label class="form-check-label" for="defaultCheck1">
@@ -99,21 +101,21 @@
                 class="form-check-input"
                 type="checkbox"
                 name="checkbox[]"
-                value='ri-android-line ri-xl'
+                value='android'
                 id="defaultCheck1"
               />
               <label class="form-check-label" for="defaultCheck1">
                 Android
               </label>
             </div>
-          </div>
-          <div>
+         
+         
             <div class="form-check">
               <input
                 class="form-check-input"
                 type="checkbox"
                 name="checkbox[]"
-                value='ri-github-line ri-xl'
+                value='github'
                 id="defaultCheck1"
               />
               <label class="form-check-label" for="defaultCheck1">
@@ -125,14 +127,39 @@
                 class="form-check-input"
                 type="checkbox"
                 name="checkbox[]"
-                value='ri-gatsby-line ri-xl'
+                value='gatsby'
                 id="defaultCheck1"
               />
               <label class="form-check-label" for="defaultCheck1">
                 Gatsby
               </label>
             </div>
-          </div>
+              <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="checkbox[]"
+                value='flutter'
+                id="defaultCheck1"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                flutter
+              </label>
+            </div>
+
+             <div class="form-check">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                name="checkbox[]"
+                value='vuejs'
+                id="defaultCheck1"
+              />
+              <label class="form-check-label" for="defaultCheck1">
+                Vuejs
+              </label>
+            </div>
+          {{/if}}
         </div>
         </div>
 

@@ -34,24 +34,22 @@
               <a type="button" class="btn btn-dark" href="contact.html">contact</a>
             </div>
           </nav>
-       <section style="min-height: 90vh;background-color: rgb(227, 230, 233);" class="">
+       <section style="min-height: 90vh;background-color: rgb(227, 230, 233);padding-right:20px;padding-left:20px" class="">
         <div class="p-3">
           <h1 class=" text-center mb-4" id="title">{{project.name}}</h1>
-          <div class="d-flex" style="gap: 40px;">
-            <img src="/public/asset/image.jpg" class="img-fluid" alt="">
+          <div class="d-flex" style="gap: 50px;">
+            <img src="{{project.image}}" class="img-fluid" alt="">
             <div>
               <h3>Duration</h3>
-              <div class="mt-2"><i class="ri-calculator-fill ri-lg"></i>  <span id="date">{{project.date}}</span></div>
-              <div class="mt-3"><i class="ri-timer-2-line ri-lg"></i>  <span id="duration">{{project.duration}}</span></div>
-              <h3 class=" mt-4 mb-2">Tecnologies</h3>
-              <div id="teknologi" style="display:grid; grid-template-columns: repeat(3,minmax(0,1fr));gap: 10px;">
-                 {{#each project.checkbox}}
-                 <i class="{{this}}"></i>
-                {{/each}}
+              <div class="mt-2"><i class="ri-calculator-fill ri-lg"></i>  <span id="date">{{fulltime}}</span></div>
+              <div class="mt-3"><i class="ri-timer-2-line ri-lg"></i>  <span id="duration">{{duration true}}</span></div>
+              <h3 class=" mt-4 mb-3">Tecnologies</h3>
+              <div id="teknologi" style="display:grid; grid-template-columns: repeat(3,minmax(0,1fr));gap: 10px;list-style:none">
+               {{{tecnologisIcon true}}}
               </div>
             </div>
           </div>
-          <p id="content" class="mt-3">{{project.content}}</p>
+          <p id="content" class="mt-3">{{project.description}}</p>
         </div>
        </section>
      

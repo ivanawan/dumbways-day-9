@@ -63,7 +63,7 @@
             </div>
             
        </section>      
-       <section style="height:100vh;" class="pt-4">
+       <section style="min-height:100vh;" class="pt-4 pb-5">
          <h1 class=" mb-5 text-center">My Project</h1>
          <div class="container">
            <div class="row" id="grid">
@@ -73,10 +73,10 @@
         <div  class="card"   >
         <img class="card-img-top" src="{{this.image}}" alt="">
         <div class="card-body" >
-        <p class="card-title" style="margin-bottom:0px">{{this.name}}</p>
-        <p class="durasi" style="margin-top:0px;">Durasi : {{fulltime}}</p>
-        <p class="card-text">{{this.description}}</p>
-        <div class="d-flex mb-2" style="list-style: none;">
+        <h4 class="card-title" style="margin-bottom:0px">{{this.name}}</h4>
+        <p class="durasi" style="margin-top:0px;color:rgb(139, 139, 139);">Durasi : {{duration}}</p>
+        <p class="card-text" style="height:70px;overflow: hidden;text-overflow: ellipsis;">{{this.description}}</p>
+        <div class="d-flex mb-4" style="list-style: none;gap:10px;">
             {{{ tecnologisIcon}}}
             {{!-- <i class="{{this}}"></i> --}}
         </div>
