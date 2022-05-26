@@ -55,9 +55,9 @@
       <div class="container" style="max-width: 400px">
         <h1 style="text-align: center">Add My Project</h1>
         {{#if edit}}
-        <form action="/project/update/{{edit.id}}" method="post">
+        <form action="/project/update/{{edit.id}}" method="post"  enctype="multipart/form-data">
         {{else}}
-        <form action="/project/add" method="post">
+        <form action="/project/add" method="post"  enctype="multipart/form-data">
         {{/if}}
         <div class="form-group mt-4">
           <label for="exampleFormControlInput1">Project Name</label>
@@ -90,7 +90,7 @@
                 type="checkbox"
                 name="checkbox[]"
                 value='reactjs'
-                id="defaultCheck1"
+                
               />
               <label class="form-check-label" for="defaultCheck1">
                 React Js
@@ -102,7 +102,7 @@
                 type="checkbox"
                 name="checkbox[]"
                 value='android'
-                id="defaultCheck1"
+               
               />
               <label class="form-check-label" for="defaultCheck1">
                 Android
@@ -116,7 +116,7 @@
                 type="checkbox"
                 name="checkbox[]"
                 value='github'
-                id="defaultCheck1"
+               
               />
               <label class="form-check-label" for="defaultCheck1">
                 Github
@@ -128,7 +128,7 @@
                 type="checkbox"
                 name="checkbox[]"
                 value='gatsby'
-                id="defaultCheck1"
+               
               />
               <label class="form-check-label" for="defaultCheck1">
                 Gatsby
@@ -140,7 +140,7 @@
                 type="checkbox"
                 name="checkbox[]"
                 value='flutter'
-                id="defaultCheck1"
+               
               />
               <label class="form-check-label" for="defaultCheck1">
                 flutter
@@ -153,7 +153,7 @@
                 type="checkbox"
                 name="checkbox[]"
                 value='vuejs'
-                id="defaultCheck1"
+               
               />
               <label class="form-check-label" for="defaultCheck1">
                 Vuejs
@@ -168,8 +168,10 @@
             type="file"
             class="form-control"
             id="image"
+            name="image"
             aria-describedby="inputGroupFileAddon04"
             aria-label="Upload"
+            required
           />
         </div>
 

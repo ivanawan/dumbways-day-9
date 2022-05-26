@@ -3,6 +3,16 @@ const { redirect, render } = require("express/lib/response");
 const hbs = require("hbs");
 const async = require("hbs/lib/async");
 const { postgress, db } = require("./connection/db.js");
+const multer  = require('multer');
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/image/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + '.jpg') //Appending .jpg
+  }
+});
+const upload = multer({ storage });
 const app = express();
 const PORT = 80;
 const month = [
@@ -34,17 +44,14 @@ app.get("/project/add", (req, res) => {
   res.render("project");
 });
 
-app.post("/project/add", async (req, res) => {
+app.post("/project/add", upload.single('image'), async (req, res) => {
   const data = req.body;
-  
+  const checkbox= typeof data["checkbox"] == "object"  ? JSON.stringify(data["checkbox"]) : `["` + data["checkbox"] + `"]` ;
+  // console.log(data);
   await postgress(
     `insert into tb_project(name,start_date,end_date,description,technologi,image)
    values('${data["name"]}','${data["date-start"]}','${data["date-end"]}',
-  '${data["content"]}','${
-      typeof data["checkbox[]"] == "object"
-        ? JSON.stringify(data["checkbox[]"])
-        : `["` + data["checkbox[]"] + `"]`
-    }','public/asset/image.jpg');`
+  '${data["content"]}','${checkbox}','${req.file.filename}');`
   );
   res.redirect("/");
 });
