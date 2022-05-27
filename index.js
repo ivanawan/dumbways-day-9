@@ -1,5 +1,5 @@
 const express = require("express");
-const { redirect, render } = require("express/lib/response");
+const { redirect, render, type } = require("express/lib/response");
 const hbs = require("hbs");
 const async = require("hbs/lib/async");
 const { postgress, db } = require("./connection/db.js");
@@ -50,7 +50,7 @@ app.post("/project/add", upload.single('image'), async (req, res) => {
   // console.log(data);
   await postgress(
     `insert into tb_project(name,start_date,end_date,description,technologi,image)
-   values('${data["name"]}','${data["date-start"]}','${data["date-end"]}',
+   values('${data["name"]}','${data["dateStart"]}','${data["dateEnd"]}',
   '${data["content"]}','${checkbox}','${req.file.filename}');`
   );
   res.redirect("/");
@@ -68,17 +68,15 @@ app.get("/project/edit/:id", async (req, res) => {
   res.render("project", { edit: data[0] });
 });
 
-app.post("/project/update/:id", async (req, res) => {
+app.post("/project/update/:id",upload.single('image'), async (req, res) => {
   const data = req.body;
+  const checkbox= typeof data["checkbox"] == "object"  ? JSON.stringify(data["checkbox"]) : `["` + data["checkbox"] + `"]` ;
+  const image = typeof req.file == "undefined" ? "" :`,image='${req.file.filename}'`;
+
   await postgress(
-    `UPDATE tb_project SET name='${data["name"]}',start_date='${
-      data["date_start"]
-    }',end_date='${data["date_end"]}',description='${data["content"]}',
-   technologi='${
-     typeof data["checkbox[]"] == "array"
-       ? data["checkbox[]"]
-       : Array.from(data["checkbox[]"])
-   }',image='public/asset/image.jpg'
+    `UPDATE tb_project SET name='${data["name"]}',start_date='${data["dateStart"]}',
+   end_date='${data["dateEnd"]}',description='${data["content"]}',
+   technologi='${checkbox}' ${image}
    WHERE id=${req.params.id};`
   );
   res.redirect("/");
